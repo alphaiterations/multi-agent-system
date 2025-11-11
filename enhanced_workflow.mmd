@@ -1,0 +1,79 @@
+graph TD;
+    %% --- Core Flow ---
+    User[User Query] --> Supervisor[Supervisor Agent]
+    Supervisor --> Policy[Policy Agent]
+    Supervisor --> Billing[Billing Agent]
+    Supervisor --> Claims[Claims Agent]
+    Supervisor --> General[General Help Agent]
+    Supervisor --> Human[Human Escalation Agent]
+    Supervisor --> Final[Final Answer Agent]
+
+    %% --- Databases ---
+    Database[(SQLite DB)]
+    VectorDB[(ChromaDB)]
+
+    %% --- Tool Nodes ---
+    subgraph Tools
+        AskUser[ask_user 🛠️]
+        GetPolicy[get_policy_details 🛠️]
+        GetAutoPolicy[get_auto_policy_details 🛠️]
+        GetBilling[get_billing_info 🛠️]
+        GetPayment[get_payment_history 🛠️]
+        GetClaimStatus[get_claim_status 🛠️]
+    end
+
+    %% --- Tool Connections to Agents ---
+    Supervisor --> AskUser
+    Policy --> GetPolicy
+    Policy --> GetAutoPolicy
+    Billing --> GetBilling
+    Billing --> GetPayment
+    Claims --> GetClaimStatus
+
+    %% --- Tool ↔ Database Connections ---
+    GetPolicy --> Database
+    GetAutoPolicy --> Database
+    GetBilling --> Database
+    GetPayment --> Database
+    GetClaimStatus --> Database
+
+    %% --- General Help Agent uses Vector DB ---
+    General --> VectorDB
+
+    %% --- Agent Return Flow ---
+    Policy --> Supervisor
+    Billing --> Supervisor
+    Claims --> Supervisor
+    General --> Supervisor
+    
+    %% --- Supervisor routes to Final Answer ---
+
+    Final --> End[End]
+    Human --> End
+
+    %% --- Grouping ---
+    subgraph Agents
+        Supervisor
+        Policy
+        Billing
+        Claims
+        General
+        Human
+        Final
+    end
+
+    %% --- Styling ---
+    classDef db fill:#fef6e4,stroke:#e3b261,stroke-width:1px;
+    class Database,VectorDB db;
+
+    classDef tool fill:#e0f7fa,stroke:#00acc1,stroke-width:1px;
+    class AskUser,GetPolicy,GetAutoPolicy,GetBilling,GetPayment,GetClaimStatus tool;
+
+    classDef agent fill:#e8f0fe,stroke:#4285f4,stroke-width:1px;
+    class Policy,Billing,Claims,General,Human,Final agent;
+
+    classDef supervisor fill:#fff3cd,stroke:#ff9800,stroke-width:2px,font-weight:bold;
+    class Supervisor supervisor;
+
+    classDef terminal fill:#c8e6c9,stroke:#2e7d32,stroke-width:1px;
+    class End terminal;
