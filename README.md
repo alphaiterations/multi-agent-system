@@ -400,14 +400,8 @@ Human Escalation Agent:
 4. **Accuracy** - Specialists have focused tools and knowledge
 5. **User Experience** - Natural conversation flow with context retention
 
-### Measured Improvements
 
-- **Response Accuracy**: 92% (vs. 78% with single-agent)
-- **Context Retention**: 95% (vs. 65%)
-- **User Satisfaction**: 4.6/5 (vs. 3.8/5)
-- **Resolution Rate**: 87% without human escalation
 
----
 
 ## 🔍 Technical Stack
 
@@ -517,7 +511,6 @@ pip install -r requirements.txt
 Create a `.env` file:
 ```
 OPEN_AI_KEY=your_openai_api_key
-SERPER_API_KEY=your_serper_api_key
 ```
 
 ### Running the System
