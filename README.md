@@ -2,6 +2,9 @@
 
 ![Multi-Agent System Architecture](https://img.shields.io/badge/AI-Multi--Agent%20System-blue) ![Python](https://img.shields.io/badge/Python-3.10%2B-green) ![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-orange)
 
+
+Read full Medium Article Here: [Agentic AI Project: Build a multi-agent system with LangGraph](https://medium.com/towards-artificial-intelligence/agentic-ai-project-build-a-multi-agent-system-with-langgraph-and-open-ai-344ab768caac)
+
 ## Overview
 
 This project walks through an end-to-end insurance support copilot that combines LangGraph, Retrieval-Augmented Generation (RAG), and structured data to resolve customer requests. The companion notebook (`multi-agent system.ipynb`) shows how to stand up the data stack, orchestrate specialized agents, and observe every hop with Phoenix tracing.
