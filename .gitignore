@@ -1,3 +1,4 @@
 .env
 chroma_db
 insurance_support.db
+*.log
