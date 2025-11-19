@@ -2,3 +2,5 @@
 chroma_db
 insurance_support.db
 *.log
+*.ipynb_checkpoints
+*.virtual_documents
